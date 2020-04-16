@@ -1,0 +1,2 @@
+rootProject.name='RBAC_demo_STU_FIIT'
+include ':app'
