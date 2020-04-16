@@ -1,5 +1,5 @@
 # STU-FIIT-AndroidDemoRBAC
-Android demo app with Firebase Auth and Cloud Firestore db
+Android demo app with Google's Firebase Auth and Cloud Firestore db
 
 ![login](https://user-images.githubusercontent.com/60112250/79499055-a8f79100-802a-11ea-8476-50e537050cd5.jpg)
 ![reg teacher](https://user-images.githubusercontent.com/60112250/79499059-aa28be00-802a-11ea-97d6-12945938c1e4.jpg)
