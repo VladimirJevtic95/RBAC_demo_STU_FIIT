@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,10 +23,10 @@ import java.util.Objects;
 public class MainActivity extends Activity {
 
     TextView tvTitle, tvName, tvEmail, tvPhone, tvTeacherNumber, tvTeacherYears;
-
     TextView tvStudentNumber, tvStudentYears, tvStudentDegree;
     LinearLayout LayoutTeacherNumber, LayoutTeacherYears, LayoutStudentNumber, LayoutStudentYears, LayoutStudentDegree;
     LinearLayout layoutTeacher, layoutStudent;
+    Button bntLogout;
 
     ImageView imageAvatar;
 
@@ -56,9 +57,19 @@ public class MainActivity extends Activity {
         LayoutStudentDegree = findViewById(R.id.LayoutStudentDegree);
         layoutTeacher = findViewById(R.id.layoutTeacher);
         layoutStudent = findViewById(R.id.layoutStudent);
+        bntLogout=findViewById(R.id.btnLogout);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
+
+        bntLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseAuth.signOut(); //logout
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
+            }
+        });
 
         userId = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid();
 
@@ -96,11 +107,5 @@ public class MainActivity extends Activity {
                 }
             }
         });
-    }
-
-    public void logout(View view) {
-        FirebaseAuth.getInstance().signOut(); //logout
-        startActivity(new Intent(getApplicationContext(), LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-        finish();
     }
 }
